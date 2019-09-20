@@ -13,7 +13,7 @@ public class Heroku2Application {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello World!";
+		return "Banco com 2 instancias xD";
 	}
 
 	public static void main(String[] args) {
