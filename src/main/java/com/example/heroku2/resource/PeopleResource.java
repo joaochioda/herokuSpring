@@ -36,12 +36,11 @@ public class PeopleResource {
 //        return ResponseEntity.ok("resource saved");
 //    }
 
-//    @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
-//    public void getLanche(@PathVariable Long id){
-//
-//        personService.updatePerson(id);
-//    }
-//    @RequestMapping(value = "/pessoa/{id}", method = RequestMethod.GET)
-//    public void getPeopleId(@PathVariable(value = "id") long id)
+    
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
+    public void getLanche(@PathVariable Long id){
+
+        personService.updatePerson(id);
+    }
 
 }
