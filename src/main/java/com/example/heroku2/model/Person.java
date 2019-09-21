@@ -15,8 +15,8 @@ public class Person {
     private String rg;
     private Double pontos;
     private String phone;
-    @ManyToMany
-    private List<Essencia> essencia;
+//    @ManyToMany
+//    private List<Essencia> essencia;
 
     public Person() {
 
@@ -29,7 +29,7 @@ public class Person {
         this.rg = rg;
         this.pontos = pontos;
         this.phone = phone;
-        this.essencia = essencia;
+//        this.essencia = essencia;
     }
 
     public String getSobrenome() {
@@ -64,13 +64,13 @@ public class Person {
         this.pontos = pontos;
     }
 
-    public List<Essencia> getEssencia() {
-        return essencia;
-    }
+//    public List<Essencia> getEssencia() {
+//        return essencia;
+//    }
 
-    public void setEssencia(List<Essencia> essencia) {
-        this.essencia = essencia;
-    }
+//    public void setEssencia(List<Essencia> essencia) {
+//        this.essencia = essencia;
+//    }
 
     public String getPhone() {
         return phone;

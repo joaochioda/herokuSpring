@@ -36,7 +36,7 @@ public class PeopleResource {
 //        return ResponseEntity.ok("resource saved");
 //    }
 
-    
+
     @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
     public void getLanche(@PathVariable Long id){
 
