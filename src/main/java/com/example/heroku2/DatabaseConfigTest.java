@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Profile;
 @Profile("test")
 public class DatabaseConfigTest {
     public String testDatabaseConfigTest() {
-        System.out.println("banco teste h2");
-        return "Conectado banco teste com sucesso";
+    return "oi";
     }
 }
