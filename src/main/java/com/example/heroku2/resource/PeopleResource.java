@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/person")
 public class PeopleResource {
 
     @Autowired
@@ -19,7 +20,15 @@ public class PeopleResource {
     @Autowired
     private PersonRepository personRepository;
 
+    @PostMapping
+    public Person adicionar(@Valid @RequestBody Person person) {
+        return personRepository.save(person);
+    }
 
+    @GetMapping
+    public List<Person> listar() {
+        return personRepository.findAll();
+    }
 
 //    @PutMapping("/person/{id}")
 //    public ResponseEntity<?> saveResource(@RequestBody Person person,@PathVariable("id") Long id) {
@@ -27,26 +36,12 @@ public class PeopleResource {
 //        return ResponseEntity.ok("resource saved");
 //    }
 
-
-
-    @RequestMapping(value = "/person", method =  RequestMethod.POST)
-        public Person addPerson(@RequestBody Person person){
-           return personService.addPerson(person);
-        }
-
-    @RequestMapping(value = "/person", method = RequestMethod.GET)
-    public List<Person> getPeron(){
-        return personService.getPerson();
-    }
-
-    @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
-    public void getLanche(@PathVariable Long id){
-
-        personService.updatePerson(id);
-    }
-    @RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
-    public void getPeopleId(@PathVariable(value = "id") long id) {
-        System.out.println("oi");
-    }
+//    @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
+//    public void getLanche(@PathVariable Long id){
+//
+//        personService.updatePerson(id);
+//    }
+//    @RequestMapping(value = "/pessoa/{id}", method = RequestMethod.GET)
+//    public void getPeopleId(@PathVariable(value = "id") long id)
 
 }
