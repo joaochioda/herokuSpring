@@ -1,4 +1,4 @@
-package com.example.heroku2.resource;
+package com.example.heroku2.controller;
 
 import com.example.heroku2.model.Contato;
 import com.example.heroku2.repository.Contatos;
