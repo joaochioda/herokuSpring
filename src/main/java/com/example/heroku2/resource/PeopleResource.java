@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
 public class PeopleResource {
 
     @Autowired
@@ -20,21 +19,25 @@ public class PeopleResource {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping
-    public Person adicionar(@Valid @RequestBody Person person) {
-        return personRepository.save(person);
-    }
 
-    @GetMapping
-    public List<Person> listar() {
-        return personRepository.findAll();
-    }
 
 //    @PutMapping("/person/{id}")
 //    public ResponseEntity<?> saveResource(@RequestBody Person person,@PathVariable("id") Long id) {
 //        personService.updatePerson(person,id);
 //        return ResponseEntity.ok("resource saved");
 //    }
+
+
+
+    @RequestMapping(value = "/person", method =  RequestMethod.POST)
+        public Person addPerson(@RequestBody Person person){
+           return personService.addPerson(person);
+        }
+
+    @RequestMapping(value = "/person", method = RequestMethod.GET)
+    public List<Person> getPeron(){
+        return personService.getPerson();
+    }
 
     @RequestMapping(value = "/person/{id}", method = RequestMethod.PATCH)
     public void getLanche(@PathVariable Long id){
