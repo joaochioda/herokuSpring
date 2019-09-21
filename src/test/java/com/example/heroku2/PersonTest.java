@@ -1,8 +1,7 @@
 package com.example.heroku2;
 
 
-import com.example.heroku2.repository.Contatos;
-import org.assertj.core.api.Assertions;
+import com.example.heroku2.repository.PersonRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PersonTest {
 
     @Autowired
-    private Contatos personRepositoryRepository;
+    private PersonRepository personRepositoryRepository;
 
     @Test
     public void addPerson() {
