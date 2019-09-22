@@ -22,6 +22,13 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+
+    public  List<Person> getPerson() {
+        List<Person> person = new ArrayList<>();
+        personRepository.findAll().forEach(person::add);
+        return person;
+    }
+
     public Person addEssencia(Essencia essencia, Long id) {
         Optional<Essencia> essenciaNova = essenciaRepository.findById(essencia.getId());
         Optional<Person> person = personRepository.findById(id);

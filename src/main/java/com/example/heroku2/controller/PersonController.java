@@ -25,4 +25,9 @@ public class PersonController {
     public Person addEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
         return personService.addEssencia(essencia, id);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value="/person")
+    public Person getPerson() {
+        return personService.getPerson();
+    }
 }
