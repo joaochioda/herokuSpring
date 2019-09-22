@@ -49,6 +49,15 @@ public class Person {
         this.essencias = essencias;
     }
 
+
+public Person() {
+
+}
+
+    public Person(Long id) {
+        this.id = id;
+    }
+
     public void setEssencias(List<Essencia> essencias) {
         this.essencias = essencias;
     }

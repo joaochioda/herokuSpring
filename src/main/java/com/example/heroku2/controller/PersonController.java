@@ -1,5 +1,6 @@
 package com.example.heroku2.controller;
 
+import com.example.heroku2.model.Essencia;
 import com.example.heroku2.model.Person;
 import com.example.heroku2.repository.PersonRepository;
 import com.example.heroku2.service.PersonService;
@@ -18,5 +19,10 @@ public class PersonController {
     @RequestMapping(method = RequestMethod.POST, value= "/person")
     public Person addPerson(@RequestBody Person person) {
         return personService.addPerson(person);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/person/{id}/essencia")
+    public Person addEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
+        return personService.addEssencia(essencia, id);
     }
 }
