@@ -29,6 +29,44 @@ public class PersonService {
         return person;
     }
 
+
+    public Person removeEssencia (Essencia essencia, Long id) {
+        Optional<Essencia> essenciaOpt = essenciaRepository.findById(essencia.getId());
+        Optional<Person> personOpt = personRepository.findById(id);
+        if (essenciaOpt.isPresent() && personOpt.isPresent()){
+            Essencia essencia1 = essenciaOpt.get();
+            Person person1 = personOpt.get();
+            List<Essencia> listaEssencia = new ArrayList<>();
+            person1.getEssencias().forEach(c-> {
+                if (c.getId() != essencia1.getId()){
+                    listaEssencia.add(c);
+                }
+            });
+
+            person1.setEssencias(listaEssencia);
+            return personRepository.save(person1);
+        }
+        return null;
+    }
+
+    public List<Essencia> getPersonEssencia (Long id) {
+        Optional<Person> person = personRepository.findById(id);
+        if(person.isPresent()){
+            return person.get().getEssencias();
+        }
+
+        return null;
+    }
+
+    public Person getPersonById(Long id) {
+        Optional<Person> person = personRepository.findById(id);
+        if(person.isPresent()) {
+            return person.get();
+        }
+
+        return null;
+    }
+
     public Person addEssencia(Essencia essencia, Long id) {
         Optional<Essencia> essenciaNova = essenciaRepository.findById(essencia.getId());
         Optional<Person> person = personRepository.findById(id);

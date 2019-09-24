@@ -26,6 +26,21 @@ public class PersonController {
         return personService.addEssencia(essencia, id);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}/essencia")
+    public Person removeEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
+        return personService.removeEssencia(essencia, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/person/{id}/essencia")
+    public List<Essencia> getPersonEssencia(@PathVariable Long id) {
+        return personService.getPersonEssencia(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/person/{id}")
+    public Person getPersonById(@PathVariable Long id) {
+        return personService.getPersonById(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value="/person")
     public List<Person> getPerson() {
        return personService.getPerson();

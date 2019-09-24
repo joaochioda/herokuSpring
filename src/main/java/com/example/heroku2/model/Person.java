@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@TableGenerator(name="tab", initialValue=0, allocationSize=50)
+@TableGenerator(name="tab", initialValue=1, allocationSize=1)
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")

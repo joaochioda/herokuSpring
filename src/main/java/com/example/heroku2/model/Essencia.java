@@ -3,7 +3,7 @@ package com.example.heroku2.model;
 import javax.persistence.*;
 
 @Entity
-@TableGenerator(name="tab", initialValue=0, allocationSize=50)
+@TableGenerator(name="tab", initialValue=1, allocationSize=1)
 
 public class Essencia {
     @Id
@@ -12,10 +12,12 @@ public class Essencia {
     private String marca;
     private String gosto;
     private String sabor;
+    private String comentario;
     private Long reputacao;
 
-    public Essencia(String marca, String gosto, String sabor, Long reputacao) {
+    public Essencia(String marca, String gosto, String sabor, Long reputacao,String comentario) {
         this.marca = marca;
+        this.comentario = comentario;
         this.gosto = gosto;
         this.sabor = sabor;
         this.reputacao = reputacao;
