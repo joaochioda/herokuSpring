@@ -84,6 +84,7 @@ public class PersonService {
                     batata.setReputacao(c.getReputacao());
                     batata.setSabor(c.getSabor());
                     batata.setMarca(c.getMarca());
+                    batata.setComentario(c.getComentario());
                     listaEssencia.add(batata);
                     }
                     );

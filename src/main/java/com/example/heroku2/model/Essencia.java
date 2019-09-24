@@ -65,4 +65,12 @@ public class Essencia {
     public void setReputacao(Long reputacao) {
         this.reputacao = reputacao;
     }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
 }
