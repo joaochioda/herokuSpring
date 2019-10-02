@@ -44,6 +44,10 @@ public class PersonController {
     @RequestMapping(method = RequestMethod.GET, value="/person")
     public List<Person> getPerson() {
        return personService.getPerson();
+    }
 
+    @RequestMapping(method = RequestMethod.GET, value="/registered")
+    public Boolean getIsRegistered(@RequestBody Person person) {
+        return personService.getIsRegistered(person);
     }
 }

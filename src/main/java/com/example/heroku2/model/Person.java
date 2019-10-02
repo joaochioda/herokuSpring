@@ -10,16 +10,27 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
     private String name;
-    private String phone;
+    private String estado;
+    private String cidade;
+    private String token;
+    private String email;
+
     @ManyToMany
     private List<Essencia> essencias;
 
-    public String getPhone() {
-        return phone;
+    public Person(Long id, String name, String estado, String cidade, String token, String email, List<Essencia> essencias) {
+        this.id = id;
+        this.name = name;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.token = token;
+        this.email = email;
+        this.essencias = essencias;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public Person(String token, String email) {
+        this.token = token;
+        this.email = email;
     }
 
     public Long getId() {
@@ -42,15 +53,40 @@ public class Person {
         return essencias;
     }
 
-    public Person(Long id, String name, String phone, List<Essencia> essencias) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.essencias = essencias;
+
+    public String getEstado() {
+        return estado;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
-public Person() {
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Person() {
 
 }
 

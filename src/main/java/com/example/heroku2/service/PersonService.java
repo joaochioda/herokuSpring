@@ -23,6 +23,17 @@ public class PersonService {
     }
 
 
+    public Boolean getIsRegistered(Person person) {
+        Boolean find=false;
+        for (Person c : personRepository.findAll()) {
+            if (c.getToken().contentEquals(person.getToken()) && c.getEmail().contentEquals(person.getEmail())) {
+                find = true;
+            }
+            break;
+        }
+        return find;
+    }
+
     public  List<Person> getPerson() {
         List<Person> person = new ArrayList<>();
         personRepository.findAll().forEach(person::add);
