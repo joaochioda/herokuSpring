@@ -28,8 +28,8 @@ public class PersonService {
         for (Person c : personRepository.findAll()) {
             if (c.getToken().contentEquals(person.getToken()) && c.getEmail().contentEquals(person.getEmail())) {
                 find = true;
+                break;
             }
-            break;
         }
         return find;
     }
