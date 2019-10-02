@@ -46,7 +46,7 @@ public class PersonController {
        return personService.getPerson();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/registered")
+    @RequestMapping(method = RequestMethod.POST, value="/registered")
     public Boolean getIsRegistered(@RequestBody Person person) {
         return personService.getIsRegistered(person);
     }
