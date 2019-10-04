@@ -17,7 +17,7 @@ public class PersonController {
     private PersonService personService;
 
     @RequestMapping(method = RequestMethod.POST, value= "/person")
-    public Person addPerson(@RequestBody Person person) {
+    public Boolean addPerson(@RequestBody Person person) {
         return personService.addPerson(person);
     }
 
@@ -29,6 +29,11 @@ public class PersonController {
     @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}/essencia")
     public Person removeEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
         return personService.removeEssencia(essencia, id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}")
+    public Boolean removePerson(@PathVariable Long id) {
+        return personService.removePerson(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/person/{id}/essencia")

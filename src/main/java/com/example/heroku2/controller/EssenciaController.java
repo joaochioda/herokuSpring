@@ -23,7 +23,7 @@ public class EssenciaController {
         return essenciaService.getEssenciaById(id);
     }
 
-    
+
     @RequestMapping(method = RequestMethod.GET, value = "/essencia")
     public List<Essencia> getAllEssencia() {
         return essenciaService.getAllEssencia();

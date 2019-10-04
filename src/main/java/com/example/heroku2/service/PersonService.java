@@ -7,6 +7,7 @@ import com.example.heroku2.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +19,14 @@ public class PersonService {
     @Autowired
     private EssenciaRepository essenciaRepository;
 
-    public Person addPerson(Person person){
-        return personRepository.save(person);
+    public Boolean addPerson(Person person){
+        try {
+            personRepository.save(person);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
@@ -40,6 +47,16 @@ public class PersonService {
         return person;
     }
 
+    public Boolean removePerson (Long id) {
+        Optional<Person> personOpt = personRepository.findById(id);
+        if (personOpt.isPresent()) {
+            personRepository.delete(personOpt.get());
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public Person removeEssencia (Essencia essencia, Long id) {
         Optional<Essencia> essenciaOpt = essenciaRepository.findById(essencia.getId());
