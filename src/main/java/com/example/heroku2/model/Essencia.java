@@ -1,6 +1,7 @@
 package com.example.heroku2.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @TableGenerator(name="tab", initialValue=1, allocationSize=1)
@@ -9,18 +10,20 @@ public class Essencia {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
-    private String marca;
     private String gosto;
     private String sabor;
     private String comentario;
     private Long reputacao;
 
-    public Essencia(String marca, String gosto, String sabor, Long reputacao,String comentario) {
-        this.marca = marca;
+    @ManyToMany
+    private List<Marca> marca;
+
+    public Essencia(String gosto, String sabor, Long reputacao,String comentario, List<Marca> marca) {
         this.comentario = comentario;
         this.gosto = gosto;
         this.sabor = sabor;
         this.reputacao = reputacao;
+        this.marca = marca;
     }
 
     public Essencia() {
@@ -34,11 +37,11 @@ public class Essencia {
         this.id = id;
     }
 
-    public String getMarca() {
+    public List<Marca> getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(List<Marca> marca) {
         this.marca = marca;
     }
 

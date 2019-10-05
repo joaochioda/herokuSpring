@@ -1,4 +1,5 @@
-package com.example.heroku2.controller;
+package com.example.heroku2.controller;;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.model.Person;
