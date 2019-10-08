@@ -29,6 +29,15 @@ public class PersonService {
         }
     }
 
+    public Person findMe(Person person) {
+        Person person1 = null;
+        for(Person c : personRepository.findAll()){
+            if (c.getToken().contentEquals(person.getToken()) && c.getEmail().contentEquals(person.getEmail())) {
+                person1 = c;
+            }
+        }
+        return person1;
+    }
 
     public Boolean getIsRegistered(Person person) {
         Boolean find=false;

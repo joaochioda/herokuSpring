@@ -22,6 +22,11 @@ public class PersonController {
         return personService.addPerson(person);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value= "/me")
+    public Person findMe(@RequestBody Person person) {
+        return personService.findMe(person);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value="/person/{id}/essencia")
     public Person addEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
         return personService.addEssencia(essencia, id);
