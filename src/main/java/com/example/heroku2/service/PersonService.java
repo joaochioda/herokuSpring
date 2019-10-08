@@ -29,14 +29,14 @@ public class PersonService {
         }
     }
 
-    public Person findMe(Person person) {
-        Person person1 = null;
+    public long findMe(Person person) {
+        long personId = 0;
         for(Person c : personRepository.findAll()){
             if (c.getToken().contentEquals(person.getToken()) && c.getEmail().contentEquals(person.getEmail())) {
-                person1 = c;
+                personId = c.getId();
             }
         }
-        return person1;
+        return personId;
     }
 
     public Boolean getIsRegistered(Person person) {
