@@ -30,8 +30,8 @@ public class WaitApproveController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value= "/waitapprove/{id}/deny")
-    public WaitApprove addDenyPerson(@PathVariable Long id, @RequestBody Person person) {
-        return waitApproveService.addDenyPerson(id,person);
+    public WaitApprove addDenyPerson(@PathVariable Long id, @RequestBody BodyWaitApprove bodyWaitApprove) {
+        return waitApproveService.addDenyPerson(id,bodyWaitApprove);
     }
 
 }

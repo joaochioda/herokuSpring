@@ -16,9 +16,12 @@ public class Person {
     private String email;
 
     @ManyToMany
+    private List<Pontos> pontos;
+
+    @ManyToMany
     private List<Essencia> essencias;
 
-    public Person(Long id, String name, String estado, String cidade, String token, String email, List<Essencia> essencias) {
+    public Person(Long id, String name, String estado, String cidade, String token, String email, List<Essencia> essencias, List<Pontos> pontos) {
         this.id = id;
         this.name = name;
         this.estado = estado;
@@ -26,11 +29,20 @@ public class Person {
         this.token = token;
         this.email = email;
         this.essencias = essencias;
+        this.pontos = pontos;
     }
 
     public Person(String token, String email) {
         this.token = token;
         this.email = email;
+    }
+
+    public List<Pontos> getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(List<Pontos> pontos) {
+        this.pontos = pontos;
     }
 
     public Long getId() {

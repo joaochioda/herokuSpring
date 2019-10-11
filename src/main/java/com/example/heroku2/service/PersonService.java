@@ -2,6 +2,7 @@ package com.example.heroku2.service;
 
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.model.Person;
+import com.example.heroku2.model.Pontos;
 import com.example.heroku2.repository.EssenciaRepository;
 import com.example.heroku2.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,19 @@ public class PersonService {
     @Autowired
     private EssenciaRepository essenciaRepository;
 
+    public long getPontos (Long id) {
+        long totalPontos=0;
+        Optional<Person> person = personRepository.findById(id);
+        if(person.isPresent()) {
+            List<Pontos> pontos = person.get().getPontos();
+            for(Pontos p : pontos) {
+                totalPontos = p.getPontos() + totalPontos;
+            }
+        }
+
+        return totalPontos;
+    }
+    
     public Boolean addPerson(Person person){
         try {
             personRepository.save(person);

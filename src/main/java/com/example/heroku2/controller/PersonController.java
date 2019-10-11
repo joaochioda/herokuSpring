@@ -47,6 +47,11 @@ public class PersonController {
         return personService.getPersonEssencia(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/person/{id}/pontos")
+    public Long getPersonPontos(@PathVariable Long id) {
+        return personService.getPontos(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value="/person/{id}")
     public Person getPersonById(@PathVariable Long id) {
         return personService.getPersonById(id);

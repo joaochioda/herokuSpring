@@ -1,6 +1,8 @@
 package com.example.heroku2.model;
 
 
+import com.example.heroku2.essenciaStatus;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,13 +20,17 @@ public class WaitApprove {
     private List<Person> peoplePro;
     @ManyToMany
     private List<Person> peopleAgainst;
+    private String message;
+    private essenciaStatus status;
 
-    public WaitApprove(Long id, Essencia essencia, Person owner, List<Person> peoplePro, List<Person> peopleAgainst) {
+    public WaitApprove(Long id, Essencia essencia, Person owner, List<Person> peoplePro, List<Person> peopleAgainst, String message) {
         this.id = id;
         this.essencia = essencia;
         this.owner = owner;
         this.peoplePro = peoplePro;
         this.peopleAgainst = peopleAgainst;
+        this.message = message;
+        this.status = status;
     }
 
     public WaitApprove(Long id, Essencia essencia, Person owner) {
@@ -33,8 +39,24 @@ public class WaitApprove {
         this.owner = owner;
     }
 
+    public essenciaStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(essenciaStatus status) {
+        this.status = status;
+    }
+
     public WaitApprove() {
 
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Long getId() {
