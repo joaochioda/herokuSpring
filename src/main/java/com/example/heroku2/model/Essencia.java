@@ -1,5 +1,7 @@
 package com.example.heroku2.model;
 
+import com.example.heroku2.essenciaStatus;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class Essencia {
     private String sabor;
     private String comentario;
     private Long reputacao;
+    private essenciaStatus status;
+    ;
 
     @ManyToMany
     private List<Marca> marca;
@@ -24,6 +28,14 @@ public class Essencia {
         this.sabor = sabor;
         this.reputacao = reputacao;
         this.marca = marca;
+    }
+
+    public essenciaStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(essenciaStatus status) {
+        this.status = status;
     }
 
     public Essencia() {

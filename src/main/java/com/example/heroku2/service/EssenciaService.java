@@ -1,5 +1,6 @@
 package com.example.heroku2.service;
 
+import com.example.heroku2.essenciaStatus;
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.repository.EssenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class EssenciaService {
     private EssenciaRepository essenciaRepository;
 
     public Essencia addEssencia(Essencia essencia) {
+        essencia.setStatus(essenciaStatus.WAITTING);
         return essenciaRepository.save(essencia);
     }
 
