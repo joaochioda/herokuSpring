@@ -81,8 +81,8 @@ public class PersonService {
         }
     }
 
-    public Person removeEssencia (Essencia essencia, Long id) {
-        Optional<Essencia> essenciaOpt = essenciaRepository.findById(essencia.getId());
+    public Person removeEssencia (Long ed, Long id) {
+        Optional<Essencia> essenciaOpt = essenciaRepository.findById(ed);
         Optional<Person> personOpt = personRepository.findById(id);
         if (essenciaOpt.isPresent() && personOpt.isPresent()){
             Essencia essencia1 = essenciaOpt.get();

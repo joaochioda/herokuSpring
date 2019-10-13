@@ -39,7 +39,7 @@ public class WaitApproveService {
 
     public WaitApprove addWaitApprove(WaitApprove waitApprove) {
         waitApprove.setStatus(essenciaStatus.WAITTING);
-        
+
         return waitApproveRepository.save(waitApprove);
     }
 

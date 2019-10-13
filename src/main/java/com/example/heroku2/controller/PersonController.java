@@ -32,9 +32,9 @@ public class PersonController {
         return personService.addEssencia(essencia, id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}/essencia")
-    public Person removeEssencia(@RequestBody Essencia essencia, @PathVariable Long id) {
-        return personService.removeEssencia(essencia, id);
+    @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}/essencia/{ed}")
+    public Person removeEssencia(@PathVariable Long id,@PathVariable Long ed) {
+        return personService.removeEssencia(ed, id);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/person/{id}")
