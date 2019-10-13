@@ -29,7 +29,6 @@ public class PersonService {
                 totalPontos = p.getPontos() + totalPontos;
             }
         }
-
         return totalPontos;
     }
     
