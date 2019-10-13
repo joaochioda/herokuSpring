@@ -132,6 +132,8 @@ public class PersonService {
             perss.getEssencias().stream().forEach(c-> {
                     batata.setId(c.getId());
                     batata.setGosto(c.getGosto());
+                    batata.setNome(c.getNome());
+                    batata.setProposta(c.getProposta());
                     batata.setReputacao(c.getReputacao());
                     batata.setSabor(c.getSabor());
                     batata.setMarca(c.getMarca());

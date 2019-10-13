@@ -12,8 +12,10 @@ public class Essencia {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
+    private String nome;
     private String gosto;
     private String sabor;
+    private String proposta;
     private String comentario;
     private Long reputacao;
     private essenciaStatus status;
@@ -22,8 +24,10 @@ public class Essencia {
     @ManyToMany
     private List<Marca> marca;
 
-    public Essencia(String gosto, String sabor, Long reputacao,String comentario, List<Marca> marca) {
+    public Essencia(String gosto, String sabor, Long reputacao,String comentario, List<Marca> marca, String nome, String proposta) {
         this.comentario = comentario;
+        this.nome = nome;
+        this.proposta = proposta;
         this.gosto = gosto;
         this.sabor = sabor;
         this.reputacao = reputacao;
@@ -36,6 +40,22 @@ public class Essencia {
 
     public void setStatus(essenciaStatus status) {
         this.status = status;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getProposta() {
+        return proposta;
+    }
+
+    public void setProposta(String proposta) {
+        this.proposta = proposta;
     }
 
     public Essencia() {
