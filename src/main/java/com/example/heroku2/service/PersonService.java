@@ -42,14 +42,17 @@ public class PersonService {
         }
     }
 
-    public long findMe(Person person) {
+    public Person findMe(Person person) {
         long personId = 0;
+        String name="";
         for(Person c : personRepository.findAll()){
             if (c.getToken().contentEquals(person.getToken()) && c.getEmail().contentEquals(person.getEmail())) {
                 personId = c.getId();
+                name = c.getName();
             }
+
         }
-        return personId;
+        return new Person(personId,name,null,null,null,null,null,null);
     }
 
     public Boolean getIsRegistered(Person person) {

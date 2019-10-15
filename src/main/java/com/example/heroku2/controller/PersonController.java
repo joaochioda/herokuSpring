@@ -23,7 +23,7 @@ public class PersonController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value= "/me")
-    public long findMe(@RequestBody Person person) {
+    public Person findMe(@RequestBody Person person) {
         return personService.findMe(person);
     }
 
