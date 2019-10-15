@@ -127,12 +127,12 @@ public class PersonService {
             Essencia ess = essenciaNova.get();
             Person perss = person.get();
 
+
             List<Essencia> listaEssencia = new ArrayList<>();
 
-            Essencia batata = new Essencia();
-
             perss.getEssencias().stream().forEach(c-> {
-                    batata.setId(c.getId());
+                Essencia batata = new Essencia();
+                batata.setId(c.getId());
                     batata.setGosto(c.getGosto());
                     batata.setNome(c.getNome());
                     batata.setProposta(c.getProposta());
@@ -140,7 +140,9 @@ public class PersonService {
                     batata.setSabor(c.getSabor());
                     batata.setMarca(c.getMarca());
                     batata.setComentario(c.getComentario());
+
                     listaEssencia.add(batata);
+
                     }
                     );
 
