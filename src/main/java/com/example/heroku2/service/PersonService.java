@@ -124,6 +124,12 @@ public class PersonService {
         Optional<Essencia> essenciaNova = essenciaRepository.findById(essencia.getId());
         Optional<Person> person = personRepository.findById(id);
         if(essenciaNova.isPresent()){
+
+
+            if(person.get().getEssencias().contains(essenciaNova.get())){
+               return null;
+            };
+
             Essencia ess = essenciaNova.get();
             Person perss = person.get();
 

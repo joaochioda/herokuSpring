@@ -9,6 +9,7 @@ public class Marca {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
     private String marca;
+    private String image;
 
 
     public Marca (String marca) {
@@ -29,6 +30,14 @@ public class Marca {
 
     public Long getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setId(Long id) {
