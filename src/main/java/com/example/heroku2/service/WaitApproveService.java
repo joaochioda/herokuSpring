@@ -112,7 +112,7 @@ public class WaitApproveService {
                 List<Person> people = waitApprove.get().getPeopleAgainst();
 
                 if (checkAlreadyVoted(people, bodyWaitApprove.getPerson()) == true ){
-                    waitApprove.get().getPeoplePro().remove(personFind.get());
+                    waitApprove.get().getPeopleAgainst().remove(personFind.get());
                     waitApproveRepository.save((waitApprove.get()));
                     return waitApprove.get();
                 } else {
