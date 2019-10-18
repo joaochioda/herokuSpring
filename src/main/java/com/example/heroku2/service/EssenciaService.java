@@ -38,7 +38,7 @@ public class EssenciaService {
         List<Essencia> essencias = new ArrayList<>();
         essenciaRepository.findAll().forEach(essencias::add);
         return essencias;
-    }
+    } 
 
     public void cadastrarTudo(List<CadastrarTudo> cadastrarTudo) {
         for(CadastrarTudo cadastra:cadastrarTudo) {
