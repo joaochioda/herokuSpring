@@ -36,10 +36,11 @@ public class Essencia {
 
     }
 
-    public Essencia(String nome, Marca marca, String image) {
+    public Essencia(String nome, Marca marca, String image, essenciaStatus status) {
         this.nome = nome;
         this.marca = marca;
         this.image = image;
+        this.status = status;
 
     }
     public Essencia(String gosto, String sabor, Long reputacao,String comentario, Marca marca, String nome, String proposta, String image) {
