@@ -1,11 +1,13 @@
 package com.example.heroku2.controller;
 
+import com.example.heroku2.model.CadastrarTudo;
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.service.EssenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 public class EssenciaController {
@@ -27,5 +29,10 @@ public class EssenciaController {
     @RequestMapping(method = RequestMethod.GET, value = "/essencia")
     public List<Essencia> getAllEssencia() {
         return essenciaService.getAllEssencia();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/cadastrartudo")
+    public void cadastrarTudo(@RequestBody List<CadastrarTudo> cadastrarTudo) {
+        essenciaService.cadastrarTudo(cadastrarTudo);
     }
 }

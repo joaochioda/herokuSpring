@@ -1,8 +1,11 @@
 package com.example.heroku2.service;
 
 import com.example.heroku2.essenciaStatus;
+import com.example.heroku2.model.CadastrarTudo;
 import com.example.heroku2.model.Essencia;
+import com.example.heroku2.model.Marca;
 import com.example.heroku2.repository.EssenciaRepository;
+import com.example.heroku2.repository.MarcaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ import java.util.Optional;
 @Service
 public class EssenciaService {
 
+    @Autowired
+    private MarcaRepository marcaRepository;
     @Autowired
     private EssenciaRepository essenciaRepository;
 
@@ -33,5 +38,21 @@ public class EssenciaService {
         List<Essencia> essencias = new ArrayList<>();
         essenciaRepository.findAll().forEach(essencias::add);
         return essencias;
+    }
+
+    public void cadastrarTudo(List<CadastrarTudo> cadastrarTudo) {
+        for(CadastrarTudo cadastra:cadastrarTudo) {
+            Marca marcas = new Marca(cadastra.getMarca(),cadastra.getImage());
+           Long id = marcaRepository.save(marcas).getId();
+
+          for(Essencia allEssencia:cadastra.getEssencias()) {
+           Optional<Marca> marca = marcaRepository.findById(id);
+              if(marca.isPresent()) {
+                  Essencia ess = new Essencia(allEssencia.getNome(),marca.get(),allEssencia.getImage());
+                  essenciaRepository.save(ess);
+              }
+
+          }
+        }
     }
 }

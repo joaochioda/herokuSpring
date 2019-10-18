@@ -16,6 +16,11 @@ public class Marca {
         this.marca = marca;
     }
 
+    public Marca(String marca, String image) {
+        this.marca = marca;
+        this.image = image;
+    }
+
     public Marca() {
 
     }

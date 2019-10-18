@@ -19,12 +19,30 @@ public class Essencia {
     private String comentario;
     private Long reputacao;
     private essenciaStatus status;
-    ;
+    private String image;
+    @ManyToOne
+    private Marca marca;
 
-    @ManyToMany
-    private List<Marca> marca;
 
-    public Essencia(String gosto, String sabor, Long reputacao,String comentario, List<Marca> marca, String nome, String proposta) {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Essencia() {
+
+    }
+
+    public Essencia(String nome, Marca marca, String image) {
+        this.nome = nome;
+        this.marca = marca;
+        this.image = image;
+
+    }
+    public Essencia(String gosto, String sabor, Long reputacao,String comentario, Marca marca, String nome, String proposta, String image) {
         this.comentario = comentario;
         this.nome = nome;
         this.proposta = proposta;
@@ -32,6 +50,7 @@ public class Essencia {
         this.sabor = sabor;
         this.reputacao = reputacao;
         this.marca = marca;
+        this.image = image;
     }
 
     public essenciaStatus getStatus() {
@@ -58,7 +77,7 @@ public class Essencia {
         this.proposta = proposta;
     }
 
-    public Essencia() {
+    public Essencia(String gosto, String sabor, Long reputacao, String comentario, Marca marca, String image, String proposta, essenciaStatus status, String nome) {
 
     }
     public Long getId() {
@@ -69,11 +88,11 @@ public class Essencia {
         this.id = id;
     }
 
-    public List<Marca> getMarca() {
+    public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(List<Marca> marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
 
