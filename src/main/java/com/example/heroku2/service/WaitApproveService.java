@@ -1,6 +1,6 @@
 package com.example.heroku2.service;
 
-import com.example.heroku2.controller.BodyWaitApprove;
+import com.example.heroku2.model.BodyWaitApprove;
 import com.example.heroku2.essenciaStatus;
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.model.Person;

@@ -54,6 +54,18 @@ public class Essencia {
         this.image = image;
     }
 
+    public Essencia(String nome, String gosto, String sabor, String proposta, String comentario, Long reputacao, essenciaStatus status, String image, Marca marca) {
+        this.nome = nome;
+        this.gosto = gosto;
+        this.sabor = sabor;
+        this.proposta = proposta;
+        this.comentario = comentario;
+        this.reputacao = reputacao;
+        this.status = status;
+        this.image = image;
+        this.marca = marca;
+    }
+
     public essenciaStatus getStatus() {
         return status;
     }

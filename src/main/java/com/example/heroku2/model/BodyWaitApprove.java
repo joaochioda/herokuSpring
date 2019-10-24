@@ -1,4 +1,4 @@
-package com.example.heroku2.controller;
+package com.example.heroku2.model;
 
 import com.example.heroku2.model.Person;
 
