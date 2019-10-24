@@ -20,7 +20,7 @@ public class Essencia {
     private Long reputacao;
     private essenciaStatus status;
     private String image;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private Marca marca;
 
 

@@ -35,4 +35,9 @@ public class EssenciaController {
     public void cadastrarTudo(@RequestBody List<CadastrarTudo> cadastrarTudo) {
         essenciaService.cadastrarTudo(cadastrarTudo);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value="/essencia/{id}")
+    public Essencia deleteEssencia(@PathVariable Long id) {
+        return essenciaService.deleteEssencia(id);
+    }
 }

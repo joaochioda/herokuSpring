@@ -48,11 +48,19 @@ public class EssenciaService {
           for(Essencia allEssencia:cadastra.getEssencias()) {
            Optional<Marca> marca = marcaRepository.findById(id);
               if(marca.isPresent()) {
-                  Essencia ess = new Essencia(allEssencia.getNome(),marca.get(),allEssencia.getImage(),essenciaStatus.CREATED);
+                  Essencia ess = new Essencia(allEssencia.getNome(),allEssencia.getMarca(),allEssencia.getImage(),essenciaStatus.CREATED);
                   essenciaRepository.save(ess);
               }
 
           }
         }
+    }
+
+    public Essencia deleteEssencia (Long id) {
+        Optional<Essencia> es = essenciaRepository.findById(id);
+        if(es.isPresent()) {
+            essenciaRepository.delete(es.get());
+        }
+        return null;
     }
 }

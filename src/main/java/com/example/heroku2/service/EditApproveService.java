@@ -65,8 +65,17 @@ public class EditApproveService {
                     people.add(personFind.get());
 
                     if(people.size()>2) {
-                        //transformar a essencia nova em status created e excluir a antiga;
-                        //dar pontos para todas as pessoas
+                        Optional<Essencia> essencia = essenciaRepository.findById(editApprove.get().getEssenciaNova().getId());
+                        Optional<Essencia> essenciaVelha = essenciaRepository.findById(editApprove.get().getEssenciaAntiga().getId());
+                        if (essencia.isPresent()) {
+                            givePoints(essencia.get().getId(), 3, editApprove.get().getOwner());
+                            people.forEach(c -> givePoints(essencia.get().getId(), 1, c));
+
+                            essencia.get().setStatus(essenciaStatus.CREATED);
+                            essenciaRepository.delete(essenciaVelha.get());
+                            essenciaRepository.save(essencia.get());
+                            editApproveRepository.delete(editApprove.get());
+                        }
 
                     } else {
                         editApprove.get().setPeoplePro(people);
