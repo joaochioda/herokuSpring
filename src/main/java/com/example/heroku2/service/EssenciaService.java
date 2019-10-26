@@ -48,7 +48,7 @@ public class EssenciaService {
           for(Essencia allEssencia:cadastra.getEssencias()) {
            Optional<Marca> marca = marcaRepository.findById(id);
               if(marca.isPresent()) {
-                  Essencia ess = new Essencia(allEssencia.getNome(),allEssencia.getMarca(),allEssencia.getImage(),essenciaStatus.CREATED);
+                  Essencia ess = new Essencia(allEssencia.getNome(),marca.get(),allEssencia.getImage(),essenciaStatus.CREATED);
                   essenciaRepository.save(ess);
               }
 
