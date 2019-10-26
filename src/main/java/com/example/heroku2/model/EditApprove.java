@@ -10,9 +10,9 @@ public class EditApprove {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private Essencia essenciaAntiga;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private Essencia essenciaNova;
     @ManyToOne
     private Person owner;

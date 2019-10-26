@@ -71,10 +71,17 @@ public class EditApproveService {
                             givePoints(essencia.get().getId(), 3, editApprove.get().getOwner());
                             people.forEach(c -> givePoints(essencia.get().getId(), 1, c));
 
-                            essencia.get().setStatus(essenciaStatus.CREATED);
-                            essenciaRepository.delete(essenciaVelha.get());
-                            essenciaRepository.save(essencia.get());
+                            essenciaVelha.get().setProposta(essencia.get().getProposta());
+                            essenciaVelha.get().setNome(essencia.get().getNome());
+                            essenciaVelha.get().setComentario(essencia.get().getComentario());
+                            essenciaVelha.get().setSabor(essencia.get().getSabor());
+                            essenciaVelha.get().setReputacao(essencia.get().getReputacao());
+                            essenciaVelha.get().setGosto(essencia.get().getGosto());
+                            essenciaVelha.get().setImage(essencia.get().getImage());
+
+                            essenciaRepository.save(essenciaVelha.get());
                             editApproveRepository.delete(editApprove.get());
+                            essenciaRepository.delete(essencia.get());
                         }
 
                     } else {
@@ -85,6 +92,42 @@ public class EditApproveService {
                 }
                 }
             }
+
+
+
+        return editApprove.get();
+    }
+
+    public EditApprove addDenyEdit(Long id, Person person) {
+        Optional<EditApprove> editApprove = editApproveRepository.findById(id);
+        Optional<Person> personFind = personRepository.findById(person.getId());
+        if(editApprove.isPresent() && personFind.isPresent()){
+            if(editApprove.get().getOwner().getId() != person.getId()) {
+
+                List<Person> people = editApprove.get().getPeopleAgainst();
+
+                if (checkAlreadyVoted(people, person) == true ){
+                    editApprove.get().getPeopleAgainst().remove(personFind.get());
+                    editApproveRepository.save((editApprove.get()));
+                    return editApprove.get();
+                } else {
+                    people.add(personFind.get());
+
+                    if(people.size()>2) {
+                        Optional<Essencia> essencia = essenciaRepository.findById(editApprove.get().getEssenciaNova().getId());
+                        if (essencia.isPresent()) {
+                            editApproveRepository.delete(editApprove.get());
+                            essenciaRepository.delete(essencia.get());
+                        }
+
+                    } else {
+                        editApprove.get().setPeopleAgainst(people);
+                        editApproveRepository.save(editApprove.get());
+                    }
+
+                }
+            }
+        }
 
 
 

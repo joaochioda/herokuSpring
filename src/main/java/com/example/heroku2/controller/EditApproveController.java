@@ -31,10 +31,10 @@ public class EditApproveController {
         return editApproveService.addAproveEdit(id,person);
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value= "/editapprove/{id}/deny")
-//    public WaitApprove addDenyPerson(@PathVariable Long id, @RequestBody BodyWaitApprove bodyWaitApprove) {
-//        return editApproveService.addDenyEdit(id,bodyWaitApprove);
-//    }
+    @RequestMapping(method = RequestMethod.POST, value= "/editapprove/{id}/deny")
+    public EditApprove addDenyPerson(@PathVariable Long id, @RequestBody Person person) {
+        return editApproveService.addDenyEdit(id,person);
+    }
     }
 
 
