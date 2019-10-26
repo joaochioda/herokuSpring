@@ -51,7 +51,6 @@ public class EssenciaService {
                   Essencia ess = new Essencia(allEssencia.getNome(),marca.get(),allEssencia.getImage(),essenciaStatus.CREATED);
                   essenciaRepository.save(ess);
               }
-
           }
         }
     }
