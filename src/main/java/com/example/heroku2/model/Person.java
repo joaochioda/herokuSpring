@@ -18,7 +18,7 @@ public class Person {
     @ManyToMany
     private List<Pontos> pontos;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REFRESH)
     private List<Essencia> essencias;
 
     public Person(Long id, String name, String estado, String cidade, String token, String email, List<Essencia> essencias, List<Pontos> pontos) {

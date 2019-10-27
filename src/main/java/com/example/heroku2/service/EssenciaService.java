@@ -1,13 +1,11 @@
 package com.example.heroku2.service;
 
 import com.example.heroku2.essenciaStatus;
-import com.example.heroku2.model.CadastrarTudo;
-import com.example.heroku2.model.Essencia;
-import com.example.heroku2.model.Marca;
-import com.example.heroku2.model.Message;
+import com.example.heroku2.model.*;
 import com.example.heroku2.repository.EssenciaRepository;
 import com.example.heroku2.repository.MarcaRepository;
 import com.example.heroku2.repository.MessageRepository;
+import com.example.heroku2.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,8 @@ public class EssenciaService {
     private EssenciaRepository essenciaRepository;
     @Autowired
     private MessageRepository messageRepository;
+    @Autowired
+    private PersonRepository personRepository;
 
     public Essencia addEssencia(Essencia essencia) {
         essencia.setStatus(essenciaStatus.WAITTING);
@@ -62,14 +62,18 @@ public class EssenciaService {
     }
 
     public Essencia addMessage (Message message, Long id) {
+
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String dateString = format.format( new Date()   );
         message.setDate(dateString);
     Long idMessage = messageRepository.save(message).getId();
     Optional<Message> mes = messageRepository.findById(idMessage);
-
+        Optional<Person> person = personRepository.findById(message.getIdOwner());
         Optional<Essencia> essencia = essenciaRepository.findById(id);
-    if(essencia.isPresent() && mes.isPresent()){
+    if(essencia.isPresent() && mes.isPresent() && person.isPresent()){
+
+        mes.get().setEmailOwner(person.get().getEmail());
+        mes.get().setNameOwner(person.get().getName());
         List<Message> listMessage = essencia.get().getMessage();
         listMessage.add(mes.get());
         essencia.get().setMessage(listMessage);

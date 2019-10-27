@@ -9,17 +9,19 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "ped")
     private Long id;
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    private Person person;
     private String date;
     private String text;
+    private String nameOwner;
+    private String emailOwner;
+    private Long idOwner;
+
     public Message() {
 
     }
 
-    public Message(Person person, String text) {
-        this.person = person;
+    public Message(String text, Long idOwner) {
         this.text = text;
+        this.idOwner = idOwner;
     }
 
     public String getText() {
@@ -38,12 +40,28 @@ public class Message {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getNameOwner() {
+        return nameOwner;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setNameOwner(String nameOwner) {
+        this.nameOwner = nameOwner;
+    }
+
+    public String getEmailOwner() {
+        return emailOwner;
+    }
+
+    public void setEmailOwner(String emailOwner) {
+        this.emailOwner = emailOwner;
+    }
+
+    public Long getIdOwner() {
+        return idOwner;
+    }
+
+    public void setIdOwner(Long idOwner) {
+        this.idOwner = idOwner;
     }
 
     public String getDate() {
