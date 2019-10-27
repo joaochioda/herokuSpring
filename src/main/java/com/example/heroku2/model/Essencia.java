@@ -22,7 +22,16 @@ public class Essencia {
     private String image;
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Marca marca;
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<Message> message;
 
+    public List<Message>  getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message>  message) {
+        this.message = message;
+    }
 
     public String getImage() {
         return image;

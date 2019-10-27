@@ -2,6 +2,7 @@ package com.example.heroku2.controller;
 
 import com.example.heroku2.model.CadastrarTudo;
 import com.example.heroku2.model.Essencia;
+import com.example.heroku2.model.Message;
 import com.example.heroku2.service.EssenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +40,10 @@ public class EssenciaController {
     @RequestMapping(method = RequestMethod.DELETE, value="/essencia/{id}")
     public Essencia deleteEssencia(@PathVariable Long id) {
         return essenciaService.deleteEssencia(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value= "/essencia/{id}/message")
+    public Essencia addMessage(@RequestBody Message message, @PathVariable Long id) {
+        return essenciaService.addMessage(message,id);
     }
 }

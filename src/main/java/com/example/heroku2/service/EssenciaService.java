@@ -4,12 +4,16 @@ import com.example.heroku2.essenciaStatus;
 import com.example.heroku2.model.CadastrarTudo;
 import com.example.heroku2.model.Essencia;
 import com.example.heroku2.model.Marca;
+import com.example.heroku2.model.Message;
 import com.example.heroku2.repository.EssenciaRepository;
 import com.example.heroku2.repository.MarcaRepository;
+import com.example.heroku2.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +24,8 @@ public class EssenciaService {
     private MarcaRepository marcaRepository;
     @Autowired
     private EssenciaRepository essenciaRepository;
+    @Autowired
+    private MessageRepository messageRepository;
 
     public Essencia addEssencia(Essencia essencia) {
         essencia.setStatus(essenciaStatus.WAITTING);
@@ -53,6 +59,25 @@ public class EssenciaService {
               }
           }
         }
+    }
+
+    public Essencia addMessage (Message message, Long id) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String dateString = format.format( new Date()   );
+        message.setDate(dateString);
+    Long idMessage = messageRepository.save(message).getId();
+    Optional<Message> mes = messageRepository.findById(idMessage);
+
+        Optional<Essencia> essencia = essenciaRepository.findById(id);
+    if(essencia.isPresent() && mes.isPresent()){
+        List<Message> listMessage = essencia.get().getMessage();
+        listMessage.add(mes.get());
+        essencia.get().setMessage(listMessage);
+        essenciaRepository.save(essencia.get());
+
+        return essencia.get();
+    }
+    return essencia.get();
     }
 
     public Essencia deleteEssencia (Long id) {
