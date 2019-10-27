@@ -146,7 +146,7 @@ public class PersonService {
                     batata.setSabor(c.getSabor());
                     batata.setMarca(c.getMarca());
                     batata.setComentario(c.getComentario());
-
+                    batata.setMessage(c.getMessage());
                     listaEssencia.add(batata);
 
                     }
